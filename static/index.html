@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>霓虹 GIF 生成器</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>霓虹 <span class="highlight">GIF</span> 生成器</h1>
+            <p>瞬间生成赛博朋克风格文字 GIF</p>
+        </header>
+
+        <main>
+            <section class="controls">
+                <div class="control-group">
+                    <label for="text-input">文本内容</label>
+                    <textarea id="text-input" rows="3" placeholder="在此输入文字...">Hello World</textarea>
+                </div>
+
+                <div class="control-row">
+                    <div class="control-group">
+                        <label for="effect-select">特效选择</label>
+                        <select id="effect-select">
+                            <option value="static">纯静态 (Static)</option>
+                            <option value="scroll" selected>滚动 (Scroll)</option>
+                            <option value="rainbow_flow">彩虹流动 (Rainbow Flow)</option>
+                            <option value="wave">波浪 (Wave)</option>
+                            <option value="bounce">弹跳 (Bounce)</option>
+                            <option value="neon">霓虹脉冲 (Neon Pulse)</option>
+                            <option value="breathing">呼吸灯 (Breathing)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="theme-select">主题背景</label>
+                        <select id="theme-select">
+                            <option value="transparent">透明 (Transparent)</option>
+                            <option value="dark" selected>深色 (Dark)</option>
+                            <option value="light">浅色 (Light)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="font-select">选择字体</label>
+                    <select id="font-select">
+                        <option value="">随机字体</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="color-group">
+                    <label for="color-input">文字颜色 (调色盘或 Hex/颜色名)</label>
+                    <div class="color-row">
+                        <input type="color" id="color-picker" value="#ffffff" title="调色盘选色">
+                        <input type="text" id="color-input" placeholder="例如: #00ffcc 或 cyan">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>参数设置</label>
+                    <div class="slider-control">
+                        <span>宽度: <span id="width-val">240</span>px</span>
+                        <input type="range" id="width-input" min="100" max="1000" value="240">
+                    </div>
+                    <div class="slider-control">
+                        <span>字体大小: <span id="fontsize-val">86</span>px</span>
+                        <input type="range" id="fontsize-input" min="20" max="300" value="86">
+                    </div>
+                    <div class="slider-control">
+                        <span>帧数: <span id="frames-val">20</span></span>
+                        <input type="range" id="frames-input" min="1" max="60" value="20">
+                    </div>
+                    <div class="slider-control">
+                        <span>延迟: <span id="delay-val">50</span>ms</span>
+                        <input type="range" id="delay-input" min="20" max="500" value="50">
+                    </div>
+                </div>
+
+                <div class="control-group checkbox-group">
+                    <input type="checkbox" id="wrap-input">
+                    <label for="wrap-input">自动换行</label>
+                </div>
+
+                <button id="download-btn" class="cyber-btn">下载 GIF</button>
+            </section>
+
+            <section class="preview">
+                <div class="preview-box">
+                    <div class="loading-overlay" id="loading">
+                        <div class="spinner"></div>
+                    </div>
+                    <div id="preview-error" class="preview-error" style="display:none"></div>
+                    <img id="gif-preview" src="" alt="GIF 预览">
+                </div>
+                <div class="url-display">
+                    <input type="text" id="url-input" readonly>
+                    <button id="copy-btn">复制链接</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
